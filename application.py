@@ -4,6 +4,8 @@ def creacion(nombre_archivo):
     archi=open(nombre_archivo,'w')
     archi.close()
 
+def existe_archivo(archivo):
+    return os.path.isfile(archivo)
 
 
 def menu():
@@ -13,7 +15,6 @@ def menu():
     print "    Ingresa el nombre del archivo que deseas crear"
     print ""
     nombre_archivo = raw_input("    Nombre: ")
-    creacion(nombre_archivo)
 
 menu()
 
