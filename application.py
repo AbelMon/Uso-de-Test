@@ -1,5 +1,6 @@
 #coding:utf-8
 import os
+import os.path
 import sys
 
 def nombre_archivo():
@@ -14,9 +15,8 @@ def existe_archivo(archivo):
     return os.path.isfile(archivo)
 
 def decidir_creacion(archivo):
-    existe = existe_archivo(archivo)
-    if existe == False:
-        creacion(archivo)
+    if os.path.isfile(archivo) == False:
+        open(archivo, 'w').close()
         print ""
         print "    * Se ha creado el archivo ", archivo
         print ""
@@ -26,11 +26,11 @@ def decidir_creacion(archivo):
         print ""
 
 def eliminar_archivo(archivo):
-    try:
+    if os.path.isfile(archivo):
         os.remove(archivo)
         print ""
         print "    * Se ha eliminado el archivo ", archivo
-    except OSError:
+    else:
         print ""
         print "    No existe el archivo"
         print ""
@@ -96,6 +96,6 @@ def menu():
             raw_input("    Presiona enter... ")
 
 
-
-menu()
+if __name__ == "__main__":
+    menu()
 
